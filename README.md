@@ -11,7 +11,7 @@ this project contains:
 - android stdlib dependencies
 - androidx UI library dependencies
 - android navigation component dependencies
-- android architecture componen dependencies
+- android architecture component dependencies
 - kotlin coroutines dependencies
 - room database dependencies
 - timber dependencies
