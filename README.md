@@ -1,19 +1,4 @@
-# CodeBase
-code base project
+# Hacker News
+this project trial using api hacker news
 
-this project used for create new scratch app
-
-this project contains:
-- kotlin DSL build gradle
-- modularization
-- retrofit network dependencies
-- koin DI dependencies
-- android stdlib dependencies
-- androidx UI library dependencies
-- android navigation component dependencies
-- android architecture component dependencies
-- kotlin coroutines dependencies
-- room database dependencies
-- timber dependencies
-- glide dependencies
-- lottie dependencies
+this project not yet running propperly, because still try solve issue not showing data in UI
