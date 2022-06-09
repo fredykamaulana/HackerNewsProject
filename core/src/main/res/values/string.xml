@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--common string values-->
+    <string name="empty_data_text_label">Belum ada data</string>
+    <string name="loading_text_label">Mohon tunggu sebentar..</string>
+
+    <!--Story list page-->
+    <string name="story_list_my_favorite_label">My Favorite</string>
+
+</resources>

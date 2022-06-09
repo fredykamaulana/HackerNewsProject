@@ -1,9 +1,8 @@
 object Versions {
     const val buildGradleVersion = "7.1.3"
-    const val kotlinGradlePluginVersion = "1.6.10"
+    const val kotlinGradlePluginVersion = "1.6.21"
 
     const val androidxCoreVersion = "1.7.0"
-    const val kotlinVersion = "1.6.10"
     const val appcompatVersion = "1.4.0"
     const val materialVersion = "1.4.0"
     const val constrainLayoutVersion = "2.1.2"

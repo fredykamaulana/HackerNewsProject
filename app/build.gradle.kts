@@ -47,6 +47,7 @@ dependencies {
 
     //module
     implementation(project(":core"))
+    implementation(project(":storylist"))
 
     implementation(Dependencies.testLibraries)
     androidTestImplementation(Dependencies.androidTestLibraries)

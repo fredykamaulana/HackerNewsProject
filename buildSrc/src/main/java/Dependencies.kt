@@ -1,8 +1,7 @@
 object Dependencies {
     // kotlin
-    private const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlinVersion}"
     private const val androidCore = "androidx.core:core-ktx:${Versions.androidxCoreVersion}"
-    val stdLibraries = listOf(kotlin, androidCore)
+    val stdLibraries = listOf(androidCore)
 
     // UI
     private const val material = "com.google.android.material:material:${Versions.materialVersion}"

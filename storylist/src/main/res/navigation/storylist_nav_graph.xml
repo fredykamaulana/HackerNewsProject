@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/storylist_nav_graph"
+    app:startDestination="@id/storyListFragment">
+
+    <fragment
+        android:id="@+id/storyListFragment"
+        android:name="com.fmyapp.storylist.presentation.storylist.StoryListFragment"
+        android:label="fragment_story_list"
+        tools:layout="@layout/fragment_story_list">
+        <action
+            android:id="@+id/action_storyListFragment_to_storyDetailFragment"
+            app:destination="@id/storyDetailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isFavorite"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/storyDetailFragment"
+        android:name="com.fmyapp.storylist.presentation.storydetail.StoryDetailFragment"
+        android:label="fragment_story_detail"
+        tools:layout="@layout/fragment_story_detail">
+        <action
+            android:id="@+id/action_storyDetailFragment_to_storyListFragment"
+            app:destination="@id/storyListFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/storyListFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isFavorite"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+
+</navigation>

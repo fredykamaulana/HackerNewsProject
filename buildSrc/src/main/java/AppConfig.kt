@@ -8,4 +8,6 @@ object AppConfig {
     const val versionName = "1.0.0"
 
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
+
+    const val BASE_URL = "\"https://hacker-news.firebaseio.com/v0/\""
 }
