@@ -1,36 +1,29 @@
 package com.fmyapp.storylist.data.repository
 
 import com.fmyapp.core.data.mapper.mapItemDtoToDomainModel
-import com.fmyapp.core.data.response.ItemResponseDto
-import com.fmyapp.core.data.utils.DataTransformer
 import com.fmyapp.core.data.utils.RemoteResult
-import com.fmyapp.core.data.utils.ResultState
 import com.fmyapp.core.domain.model.ItemDomainModel
 import com.fmyapp.storylist.data.source.ItemRemoteDataSource
 import com.fmyapp.storylist.domain.repository.ItemRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 
 class ItemRepositoryImpl(private val remoteDataSource: ItemRemoteDataSource) : ItemRepository {
-    override fun getItemTopStories(): Flow<ResultState<List<Int>>> =
-        object : DataTransformer<List<Int>, List<Int>>() {
-            override suspend fun fetchData(): Flow<RemoteResult<List<Int>>> {
-                return remoteDataSource.getItemTopStories()
-            }
+    override suspend fun getItemTopStories(): Flow<RemoteResult<List<Int>>> =
+        remoteDataSource.getItemTopStories()
 
-            override fun transformData(data: List<Int>?): List<Int> {
-                return data ?: listOf()
+    override suspend fun getItemById(id: Int): Flow<RemoteResult<ItemDomainModel>> = flow {
+        when (val response = remoteDataSource.getItemById(id).first()) {
+            is RemoteResult.Loading -> {
+                emit(RemoteResult.Loading)
             }
-        }.asFlow()
-
-    override fun getItemById(id: Int): Flow<ResultState<ItemDomainModel>> =
-        object : DataTransformer<ItemResponseDto, ItemDomainModel>() {
-            override suspend fun fetchData(): Flow<RemoteResult<ItemResponseDto>> {
-                return remoteDataSource.getItemById(id)
+            is RemoteResult.Success -> {
+                emit(RemoteResult.Success(mapItemDtoToDomainModel.map(response.data)))
             }
-
-            override fun transformData(data: ItemResponseDto?): ItemDomainModel {
-                return mapItemDtoToDomainModel.map(data)
+            is RemoteResult.Error -> {
+                emit(RemoteResult.Error(errorMessage = response.errorMessage ?: ""))
             }
-        }.asFlow()
-
+        }
+    }
 }

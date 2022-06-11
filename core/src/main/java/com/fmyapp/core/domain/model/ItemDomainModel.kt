@@ -10,7 +10,7 @@ data class ItemDomainModel(
     val poll: Int,
     val score: Int,
     val text: String,
-    val time: Int,
+    val time: Long,
     val title: String,
     val type: String,
     val url: String

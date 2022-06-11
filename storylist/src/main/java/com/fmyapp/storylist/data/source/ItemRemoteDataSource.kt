@@ -5,15 +5,13 @@ import com.fmyapp.core.data.service.ItemService
 import com.fmyapp.core.data.utils.RemoteResult
 import com.fmyapp.core.data.utils.SafeApiCall
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 class ItemRemoteDataSource(private val apiService: ItemService) : SafeApiCall() {
     suspend fun getItemTopStories(): Flow<RemoteResult<List<Int>>> {
-        return safeApiCall { getTopSize(20, apiService.getItemTopStories()) }
-        //return flow { emit(RemoteResult.Success(listOf(31678336, 31678081))) }
+        return safeApiCall { setTopSize(16, apiService.getItemTopStories()) }
     }
 
-    private fun getTopSize(size: Int, input: List<Int>): List<Int> {
+    private fun setTopSize(size: Int, input: List<Int>): List<Int> {
         val sizedList = mutableListOf<Int>()
         for (i in 0..size) {
             sizedList.add(input[i])

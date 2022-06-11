@@ -32,7 +32,7 @@ data class ItemResponseDto(
 	val text: String? = null,
 
 	@field:Json(name="time")
-	val time: Int? = null,
+	val time: Long? = null,
 
 	@field:Json(name="title")
 	val title: String? = null,

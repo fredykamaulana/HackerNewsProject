@@ -8,5 +8,5 @@ sealed class RemoteResult<out R> {
         val errorMessage: String? = null
     ) : RemoteResult<Nothing>()
 
-    object Empty : RemoteResult<Nothing>()
+    object Loading : RemoteResult<Nothing>()
 }

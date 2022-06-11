@@ -17,8 +17,8 @@
             app:exitAnim="@android:anim/slide_out_right" />
         <argument
             android:name="id"
-            android:defaultValue=""
-            app:argType="string" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <argument
             android:name="isFavorite"
             android:defaultValue="false"
@@ -39,8 +39,8 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="id"
-            android:defaultValue=""
-            app:argType="string" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <argument
             android:name="isFavorite"
             android:defaultValue="false"

@@ -1,4 +1,4 @@
-package com.fmyapp.storylist.presentation.storylist.adapter
+package com.fmyapp.storylist.presentation.storydetail.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,38 +6,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.fmyapp.core.presentation.abstraction.OnItemClickListener
 import com.fmyapp.core.presentation.model.ItemUiModel
-import com.fmyapp.storylist.databinding.LayoutItemStoryBinding
+import com.fmyapp.storylist.databinding.LayoutItemCommentBinding
+import com.fmyapp.storylist.presentation.utils.readHtml
 
-class StoryListAdapter(private val listener: OnItemClickListener) :
-    ListAdapter<ItemUiModel, StoryListAdapter.ViewHolder>(diffCallback) {
+class StoryDetailAdapter() :
+    ListAdapter<ItemUiModel, StoryDetailAdapter.ViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder.create(parent)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), listener)
+        holder.bind(getItem(position))
     }
 
-    class ViewHolder(private val binding: LayoutItemStoryBinding) :
+    class ViewHolder(private val binding: LayoutItemCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bind(item: ItemUiModel, listener: OnItemClickListener) {
-            binding.tvStoryItemTitle.text = item.title
-            binding.tvStoryItemCommentsCount.text = "Comment : ${item.descendants}"
-            binding.tvStoryItemScore.text = "Score : ${item.score}"
-
-            binding.cardStoryItem.setOnClickListener {
-                listener.onClick(item.id)
-            }
+        fun bind(item: ItemUiModel) {
+            binding.tvCommentItemTitle.text = item.text.readHtml()
+            binding.tvStoryItemCommentsUser.text = item.by
         }
 
         companion object {
             fun create(parent: ViewGroup): ViewHolder {
                 val inflater = LayoutInflater.from(parent.context)
-                val binding = LayoutItemStoryBinding.inflate(inflater, parent, false)
+                val binding = LayoutItemCommentBinding.inflate(inflater, parent, false)
 
                 return ViewHolder(binding)
             }

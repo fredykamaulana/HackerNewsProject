@@ -5,6 +5,7 @@ import com.fmyapp.storylist.data.source.ItemRemoteDataSource
 import com.fmyapp.storylist.domain.repository.ItemRepository
 import com.fmyapp.storylist.domain.usecase.ItemInteractor
 import com.fmyapp.storylist.domain.usecase.ItemUseCases
+import com.fmyapp.storylist.presentation.storydetail.StoryDetailViewModel
 import com.fmyapp.storylist.presentation.storylist.StoryListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -12,7 +13,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 
-fun injectStoryLIstKoinModules() = loadModules
+fun injectStoryListKoinModules() = loadModules
 
 private val loadModules by lazy {
     loadKoinModules(modules)
@@ -31,7 +32,8 @@ val useCases: Module = module {
 }
 
 val viewModel: Module = module {
-    viewModel { StoryListViewModel(useCase = get()) }
+    viewModel { StoryListViewModel(useCases = get()) }
+    viewModel { StoryDetailViewModel(useCases = get()) }
 }
 
 val modules = listOf(

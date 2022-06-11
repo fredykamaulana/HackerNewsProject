@@ -16,7 +16,8 @@ open class SafeApiCall {
         return flow {
             try {
                 val result = apiCall.invoke()
-                if (result != null) emit(RemoteResult.Success(result)) else emit(RemoteResult.Empty)
+                emit(RemoteResult.Success(result))
+
             } catch (throwable: Throwable) {
                 when (throwable) {
                     is HttpException -> {

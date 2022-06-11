@@ -14,7 +14,7 @@ interface ItemService {
 
     @GET("item/{id}.json")
     suspend fun getItemById(
-        @Query("print") print: String = "pretty",
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Query("print") print: String = "pretty"
     ): ItemResponseDto
 }
